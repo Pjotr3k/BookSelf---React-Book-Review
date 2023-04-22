@@ -1,11 +1,11 @@
 import React from 'react';
 import BookCard from './BookCard';
 
-function Display({ cards }) {
+function Display({ cards, onCardAction }) {
     const BookCards = cards
 
     const CardItems = BookCards.map((card) =>
-        <BookCard key={card.Id} title={card.Title} author={card.Author} rating={card.Rating} />
+        <BookCard key={card.Id} id={card.Id} onCardAction={onCardAction} title={card.Title} author={card.Author} rating={card.Rating} />
     );
 
   return (

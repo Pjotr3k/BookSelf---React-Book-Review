@@ -1,0 +1,13 @@
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: burlywood;
+    width: 200px;
+    min-height: 50px;
+    border: 1px solid #bbb;
+    align-self: center;
+    margin: 20px auto;
+    padding: 20px;
+    overflow: auto;
+}

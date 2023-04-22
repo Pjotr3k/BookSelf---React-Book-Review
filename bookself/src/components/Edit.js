@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-function Edit({ onSubmit }) {
+function Edit({ onSubmit, error }) {
 
     const [fields, changeFields] = useState({ id: '', title: '', author: '', rating: 5 });
 
@@ -23,7 +23,7 @@ function Edit({ onSubmit }) {
     return (<div>
         <form onSubmit={handleSubmit}>
             <h5>Enter new book</h5>
-            <label>id</label><input onChange={handleChange} value={fields.id} name='id'></input>
+            <label>id</label><input onChange={handleChange} value={fields.id} name='id'></input> <span>{error}</span>
             <label>title</label><input onChange={handleChange} value={fields.title} name='title'></input>
             <label>author</label><input onChange={handleChange} value={fields.author} name='author'></input>
             <label>rating</label><input type='range' min={1} max={10} onChange={handleChange} value={fields.rating} name='rating'></input>
