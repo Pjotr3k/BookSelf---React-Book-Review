@@ -1,14 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
 
-function Edit({ onSubmit, error }) {
+function Edit({id, onSubmit, error, onCancel }) {
 
-    const [fields, changeFields] = useState({ id: '', title: '', author: '', rating: 5 });
+    const [isEdit, setEdit] = useState(id === '' ? false : true)
+    const [fields, changeFields] = useState({ id: id, title: '', author: '', rating: 5 });
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        onSubmit(fields.id, fields.title, fields.author, fields.rating);
+        onSubmit(fields.id, fields.title, fields.author, fields.rating, isEdit);
     }
 
     const handleChange = (event) => {
@@ -23,11 +24,13 @@ function Edit({ onSubmit, error }) {
     return (<div>
         <form onSubmit={handleSubmit}>
             <h5>Enter new book</h5>
-            <label>id</label><input onChange={handleChange} value={fields.id} name='id'></input> <span>{error}</span>
+            <span>{error}</span>
+            <label>id</label><input disabled={isEdit} onChange={handleChange} value={fields.id} name='id'></input> 
             <label>title</label><input onChange={handleChange} value={fields.title} name='title'></input>
             <label>author</label><input onChange={handleChange} value={fields.author} name='author'></input>
             <label>rating</label><input type='range' min={1} max={10} onChange={handleChange} value={fields.rating} name='rating'></input>
             <button type="submit">Submit</button>
+            <button onClick={() => onCancel() }>Cancel</button>
             
             </form>
         </div>

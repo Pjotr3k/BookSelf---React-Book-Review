@@ -17,7 +17,8 @@ function BookCard({ key, id, title, author, rating, onCardAction }) {
               <li>{author}</li>
               <li>{rating}</li>              
           </ul>
-          <button>Edit</button> <button onClick={handleButtonClick} value='delete'>Delete</button>          
+          <button onClick={handleButtonClick} value='edit'>Edit</button>
+          <button onClick={handleButtonClick} value='delete'>Delete</button>          
 
       </div>
   );
