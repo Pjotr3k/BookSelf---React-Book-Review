@@ -69,13 +69,17 @@ function App() {
             setDataEdit({ Id: id, Visible: true, Error: dataEdit.Error })
         
     }   
-    
+
+    const getBook = (id) => {
+        var book = BookCards.filter(book => book.Id === id);
+        return book.length > 0 ? book[0] : { Id: '', Title: '', Author: '', Rating: '' };
+    }
 
     return <div>
         {Popup.Visible ? <ConfirmPopUp onConfirm={Popup.Action} communicate={Popup.Communicate} id={Popup.Id} /> : ''}        
         <Display onCardAction={handleCardAction} cards={BookCards} />
         <button onClick={() => setDataEdit({ Id: '', Visible: true, Error: '' })}>Add New Book</button>
-        {dataEdit.Visible ? <Edit id={dataEdit.Id} onCancel={closeEdit} onSubmit={handleEditField} error={dataEdit.Error} /> : ''}
+        {dataEdit.Visible ? <Edit id={dataEdit.Id} onCancel={closeEdit} book={getBook} onSubmit={handleEditField} error={dataEdit.Error} /> : ''}
         </div>;
     
 }
